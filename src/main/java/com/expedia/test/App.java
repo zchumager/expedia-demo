@@ -1,4 +1,4 @@
-package com.expedia.test.expedia_demo;
+package com.expedia.test;
 
 /**
  * Hello world!

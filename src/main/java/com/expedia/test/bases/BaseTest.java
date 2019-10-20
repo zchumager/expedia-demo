@@ -1,4 +1,4 @@
-package com.expedia.test.expedia_demo.bases;
+package com.expedia.test.bases;
 
 import java.util.logging.Logger;
 
