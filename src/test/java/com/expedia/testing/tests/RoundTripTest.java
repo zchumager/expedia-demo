@@ -7,21 +7,25 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import com.expedia.testing.bases.BaseTest;
 import com.expedia.testing.steps.HomeSteps;
 
-public class RoundTrip extends BaseTest<HomeSteps>{
-	public RoundTrip() {
+public class RoundTripTest extends BaseTest<HomeSteps>{
+	public RoundTripTest() {
 		this.driver = new ChromeDriver();
 	}
 	
 	@Before
 	public void setup() {
 		this.driver.manage().window().maximize();
-		this.driver.get("https://www.expedia.com");
-		this.steps = new HomeSteps(this.driver);
+		this.driver.get(this.config.homeUrl());
+		this.steps = new HomeSteps(this.driver, this.config);
 	}
 	
 	@Test
 	public void positiveRoundTrip() {
 		this.steps.clickFlightsButton();
-		this.steps.setDeparture("Mexico");
+		this.steps.setDeparture();
+		this.steps.setDestination();
+		this.steps.setDepartingDate();
+		this.steps.setDestinationDate();
+		this.steps.clickSearchButton();
 	}
 }

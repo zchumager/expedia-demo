@@ -2,14 +2,20 @@ package com.expedia.testing.bases;
 
 import java.util.logging.Logger;
 
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.After;
 import org.openqa.selenium.WebDriver;
+
+import com.expedia.testing.config.Configuration;
+import com.google.common.annotations.VisibleForTesting;
 
 public abstract class BaseTest<S> {
 	protected String userDir;
 	protected String driverPath;
 	protected WebDriver driver;
 	protected Logger logger;
+	
+	@VisibleForTesting protected Configuration config;
 	
 	protected S steps;
 	
@@ -19,6 +25,7 @@ public abstract class BaseTest<S> {
 		System.setProperty("webdriver.chrome.driver", this.driverPath);
 		
 		this.logger = Logger.getLogger("logger");
+		this.config = ConfigFactory.create(Configuration.class);
 	}
 	
 	@After
