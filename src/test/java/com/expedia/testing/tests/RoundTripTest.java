@@ -21,6 +21,7 @@ public class RoundTripTest extends BaseTest<HomeSteps>{
 	
 	@Test
 	public void positiveRoundTrip() {
+		this.logger.info("positiveRoundTrip Test");
 		this.steps.clickFlightsButton();
 		this.steps.setDeparture();
 		this.steps.setDestination();
