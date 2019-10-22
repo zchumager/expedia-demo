@@ -9,15 +9,12 @@ import org.openqa.selenium.WebDriver;
 import com.expedia.testing.config.Configuration;
 import com.google.common.annotations.VisibleForTesting;
 
-public abstract class BaseTest<S> {
+public abstract class BaseTest {
 	protected String userDir;
 	protected String driverPath;
 	protected WebDriver driver;
 	protected Logger logger;
-	
 	@VisibleForTesting protected Configuration config;
-	
-	protected S steps;
 	
 	public BaseTest() {
 		this.userDir = System.getProperty("user.dir");
@@ -34,4 +31,3 @@ public abstract class BaseTest<S> {
 		this.driver.quit();
 	}
 }
-

@@ -1,7 +1,10 @@
 package com.expedia.testing.utils;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -25,5 +28,10 @@ public class Utils {
 		new WebDriverWait(driver, seconds)
 		.until(ExpectedConditions.elementToBeClickable(button))
 		.click();
+	}
+	
+	public static List<WebElement> getLiElements(WebDriver driver, By children, int seconds) {
+		return new WebDriverWait(driver, seconds)
+		.until(ExpectedConditions.presenceOfAllElementsLocatedBy(children));
 	}
 }
