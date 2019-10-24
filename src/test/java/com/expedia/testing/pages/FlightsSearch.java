@@ -17,11 +17,13 @@ public class FlightsSearch extends BasePage {
 	
 	private By sortDropdown;
 	private By flightsLiList;
+	private By firstFlightButton;
 
 	public FlightsSearch(WebDriver driver, Configuration config) {
 		super(driver, config);
 		this.sortDropdown = By.id("sortDropdown");
 		this.flightsLiList = By.xpath("//li[@class='flight-module segment offer-listing']//div[@class='grid-container standard-padding ']");
+		this.firstFlightButton = By.xpath("(//li[@class='flight-module segment offer-listing']//button)[1]");
 	}
 	
 	public void selectEarliestDeparture() {
@@ -33,5 +35,11 @@ public class FlightsSearch extends BasePage {
 	
 	public List<WebElement> getLiElements() {
 		return Utils.getLiElements(this.driver, this.flightsLiList, 10);
+	}
+	
+	public void clickFirstFlightButton() {
+		new WebDriverWait(this.driver, 10)
+		.until(ExpectedConditions.elementToBeClickable(this.firstFlightButton))
+		.click();
 	}
 }

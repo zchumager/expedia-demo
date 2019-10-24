@@ -62,6 +62,6 @@ public class HomePage extends BasePage {
 	public void clickSearchButton() {
 		new WebDriverWait(this.driver, 5)
 		.until(ExpectedConditions.elementToBeClickable(this.searchButton))
-		.submit();
+		.click();
 	}
 }

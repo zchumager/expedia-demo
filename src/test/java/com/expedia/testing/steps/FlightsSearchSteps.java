@@ -23,4 +23,8 @@ public class FlightsSearchSteps extends BaseSteps<FlightsSearch>{
 	public List<WebElement> getLiElements() {
 		return this.page.getLiElements();
 	}
+	
+	public void clickFirstFlightButton() {
+		this.page.clickFirstFlightButton();
+	}
 }
