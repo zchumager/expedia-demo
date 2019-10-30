@@ -38,7 +38,7 @@ public class HomePage extends BasePage {
 	}
 	
 	public void clickFlightsButton() {
-		new WebDriverWait(this.driver, 5)
+		new WebDriverWait(this.driver, config.lowExplicitWaitSeconds())
 		.until(ExpectedConditions.elementToBeClickable(this.flightsButton))
 		.click();
 	}
@@ -52,15 +52,15 @@ public class HomePage extends BasePage {
 	}
 	
 	public void setDepartingDate() {
-		Utils.setDate(this.driver, this.departingDateInput, this.departingDateButton, 5);
+		Utils.setDate(this.driver, this.departingDateInput, this.departingDateButton, config.lowExplicitWaitSeconds());
 	}
 	
 	public void setDestinationDate() {
-		Utils.setDate(this.driver, this.destinationDateInput, this.destinationDateButton, 5);
+		Utils.setDate(this.driver, this.destinationDateInput, this.destinationDateButton, config.lowExplicitWaitSeconds());
 	}
 	
 	public void clickSearchButton() {
-		new WebDriverWait(this.driver, 5)
+		new WebDriverWait(this.driver, config.lowExplicitWaitSeconds())
 		.until(ExpectedConditions.elementToBeClickable(this.searchButton))
 		.click();
 	}

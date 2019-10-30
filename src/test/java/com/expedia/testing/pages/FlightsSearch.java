@@ -33,7 +33,7 @@ public class FlightsSearch extends BasePage {
 		WebDriverWait wait = new WebDriverWait(this.driver, config.explicitWaitSeconds());
 		new Select(
 			wait.until(ExpectedConditions.elementToBeClickable(this.sortDropdown))
-		).selectByVisibleText("Departure (Earliest)");
+		).selectByVisibleText(config.departureEarliest());
 	}
 	
 	public List<WebElement> getLiElements() {
@@ -46,7 +46,7 @@ public class FlightsSearch extends BasePage {
 			.until(ExpectedConditions.elementToBeClickable(this.firstFlightButton))
 			.click();
 			
-			this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			this.driver.manage().timeouts().implicitlyWait(config.implicitWaitSeconds(), TimeUnit.SECONDS);
 		}
 	}
 	

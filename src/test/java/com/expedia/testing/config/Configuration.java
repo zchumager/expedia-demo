@@ -5,6 +5,7 @@ import org.aeonbits.owner.Config;
 public interface Configuration extends Config{
 	int implicitWaitSeconds();
 	int explicitWaitSeconds();
+	int lowExplicitWaitSeconds();
 	
 	String homeUrl();
 	
@@ -28,6 +29,8 @@ public interface Configuration extends Config{
 	String firstFlightButton();
 	String noThanksButton();
 	
+	String departureEarliest();
+	
 	String continueBookingBtn();
 	String titleDropdown();
 	String firstNameInput();
@@ -39,4 +42,14 @@ public interface Configuration extends Config{
 	String dayOfBirdDropdown();
 	String yearOfBirdDropdown();
 	String yesFlightProtectionRadio();
+	
+	String title();
+	String firstname();
+	String middlename();
+	String lastname();
+	String countryCode();
+	String phoneNumber();
+	String month();
+	String day();
+	String year();
 }

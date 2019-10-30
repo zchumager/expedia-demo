@@ -39,48 +39,53 @@ public class FlightCheckout extends BasePage {
 	
 	public void selectTitle() {
 		new Select(new WebDriverWait(this.driver, config.explicitWaitSeconds())
-				.until(ExpectedConditions.visibilityOfElementLocated(this.titleDropdown))).selectByValue("1_Mr.");	
+				.until(ExpectedConditions.visibilityOfElementLocated(this.titleDropdown)))
+				.selectByValue(config.title());	
 	}
 	
 	public void setFirstName() {
 		new WebDriverWait(this.driver, config.explicitWaitSeconds())
 		.until(ExpectedConditions.visibilityOfElementLocated(this.firstNameInput))
-		.sendKeys("Pedro");
+		.sendKeys(config.firstname());
 	}
 	
 	public void setMiddleName() {
 		new WebDriverWait(this.driver, config.explicitWaitSeconds())
 		.until(ExpectedConditions.visibilityOfElementLocated(this.middleNameInput))
-		.sendKeys("Arnoldo");
+		.sendKeys(config.middlename());
 	}
 	
 	
 	public void setLastName() {
 		new WebDriverWait(this.driver, config.explicitWaitSeconds())
 		.until(ExpectedConditions.visibilityOfElementLocated(this.lastNameInput))
-		.sendKeys("Machado Duran");
+		.sendKeys(config.lastname());
 	}
 	
 	public void selectCountryCode() {
 		new Select(new WebDriverWait(this.driver, config.explicitWaitSeconds())
-				.until(ExpectedConditions.visibilityOfElementLocated(this.countryCodeDropdown))).selectByValue("52");
+				.until(ExpectedConditions.visibilityOfElementLocated(this.countryCodeDropdown)))
+				.selectByValue(config.countryCode());
 	}
 	
 	public void setPhoneNumber() {
 		new WebDriverWait(this.driver, config.explicitWaitSeconds())
 		.until(ExpectedConditions.visibilityOfElementLocated(this.phoneNumberInput))
-		.sendKeys("6691663733");
+		.sendKeys(config.phoneNumber());
 	}
 	
 	public void setBirthday() {
 		new Select(new WebDriverWait(this.driver, config.explicitWaitSeconds())
-				.until(ExpectedConditions.visibilityOfElementLocated(this.monthOfBirdDropdown))).selectByValue("11");
+				.until(ExpectedConditions.visibilityOfElementLocated(this.monthOfBirdDropdown)))
+				.selectByValue(config.month());
 		
 		new Select(new WebDriverWait(this.driver, config.explicitWaitSeconds())
-				.until(ExpectedConditions.visibilityOfElementLocated(this.dayOfBirdDropdown))).selectByValue("06");
+				.until(ExpectedConditions.visibilityOfElementLocated(this.dayOfBirdDropdown)))
+				.selectByValue(config.day());
 		
 		new Select(new WebDriverWait(this.driver, config.explicitWaitSeconds())
-				.until(ExpectedConditions.visibilityOfElementLocated(this.yearOfBirdDropdown))).selectByValue("1987");
+				.until(ExpectedConditions.visibilityOfElementLocated(this.yearOfBirdDropdown)))
+				.selectByValue(config.year());
 	}
 	
 	public void chooseFlightProtection() {
