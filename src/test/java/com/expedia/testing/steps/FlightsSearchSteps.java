@@ -24,7 +24,11 @@ public class FlightsSearchSteps extends BaseSteps<FlightsSearch>{
 		return this.page.getLiElements();
 	}
 	
-	public void clickFirstFlightButton() {
-		this.page.clickFirstFlightButton();
+	public void clickDepartureAndReturnButtons() {
+		this.page.clickDepartureAndReturnButtons();
+	}
+	
+	public void clickNoThanksButton() {
+		this.page.clickNoThanksButton();
 	}
 }
