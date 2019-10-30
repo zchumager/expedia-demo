@@ -14,11 +14,11 @@ public class TripReview extends BasePage{
 	
 	public TripReview(WebDriver driver, Configuration config) {
 		super(driver, config);
-		this.continueBookingBtn = By.id("bookButton");
+		this.continueBookingBtn = By.id(config.continueBookingBtn());
 	}
 	
 	public void continueBooking() {
-		new WebDriverWait(this.driver, 10)
+		new WebDriverWait(this.driver, config.explicitWaitSeconds())
 		.until(ExpectedConditions.elementToBeClickable(this.continueBookingBtn))
 		.click(); 
 	}

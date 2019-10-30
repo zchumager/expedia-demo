@@ -44,11 +44,11 @@ public class HomePage extends BasePage {
 	}
 	
 	public void setFlyingFromInput() {		
-		Utils.setInput(this.driver, this.flyingFromInput, this.config.departure(), this.firstCoincidenceLi, 10);
+		Utils.setInput(this.driver, this.flyingFromInput, this.config.departure(), this.firstCoincidenceLi, config.explicitWaitSeconds());
 	}
 	
 	public void setFlyingToInput() {
-		Utils.setInput(this.driver, this.flyingToInput, this.config.destination(), this.firstCoincidenceLi, 10);
+		Utils.setInput(this.driver, this.flyingToInput, this.config.destination(), this.firstCoincidenceLi, config.explicitWaitSeconds());
 	}
 	
 	public void setDepartingDate() {

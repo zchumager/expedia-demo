@@ -42,14 +42,12 @@ public class RoundTripTest extends BaseTest {
 	@Test
 	public void positiveRoundTrip() {
 		this.logger.info("positiveRoundTrip Test");
-		this.homeSteps.clickFlightsButton();
-		this.homeSteps.setDeparture();
-		this.homeSteps.setDestination();
-		this.homeSteps.setDepartingDate();
-		this.homeSteps.setDestinationDate();
-		this.homeSteps.clickSearchButton();
+		this.homeSteps.fillForm();
 		
 		//this.flightsSearchSteps.selectEarliestDeparture();
+		
+		//Implicit wait for delalying filtering
+		this.driver.manage().timeouts().implicitlyWait(config.implicitWaitSeconds(), TimeUnit.SECONDS);
 		List<WebElement> liList = this.flightsSearchSteps.getLiElements();
 		
 		String firstLi = Utils.getFirstLiHour(liList);
@@ -64,20 +62,15 @@ public class RoundTripTest extends BaseTest {
 		//Assert.assertEquals( true , firstDepartureHour < lastDepartureHour);
 		
 		this.flightsSearchSteps.clickDepartureAndReturnButtons();
-		
 		this.flightsSearchSteps.clickNoThanksButton();
-		
 		
 		List<String> tabs = new ArrayList<>(this.driver.getWindowHandles());
 		
-		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
+		//Implicit wait for delaying switching to other tab
+		this.driver.manage().timeouts().implicitlyWait(config.implicitWaitSeconds(), TimeUnit.SECONDS);
 		this.driver.switchTo().window(tabs.get(1));
 			
 		this.tripReviewSteps.continueBooking();
-		
 		this.flightCheckoutSteps.fillForm();
-		
-		System.out.println();
 	}
 }

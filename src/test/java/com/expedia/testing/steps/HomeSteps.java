@@ -13,27 +13,12 @@ public class HomeSteps extends BaseSteps<HomePage> {
 		this.page = new HomePage(this.driver, this.config);
 	}
 	
-	public void clickFlightsButton() {
+	public void fillForm() {
 		this.page.clickFlightsButton();
-	}
-	
-	public void setDeparture() {
 		this.page.setFlyingFromInput();
-	}
-	
-	public void setDestination(){
 		this.page.setFlyingToInput();
-	}
-	
-	public void setDepartingDate() {
 		this.page.setDepartingDate();
-	}
-	
-	public void setDestinationDate() {
 		this.page.setDestinationDate();
-	}
-	
-	public void clickSearchButton() {
 		this.page.clickSearchButton();
 	}
 }

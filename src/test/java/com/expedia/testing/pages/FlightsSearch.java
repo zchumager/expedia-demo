@@ -23,26 +23,26 @@ public class FlightsSearch extends BasePage {
 
 	public FlightsSearch(WebDriver driver, Configuration config) {
 		super(driver, config);
-		this.sortDropdown = By.id("sortDropdown");
-		this.flightsLiList = By.xpath("//li[@class='flight-module segment offer-listing']//div[@class='grid-container standard-padding ']");
-		this.firstFlightButton = By.xpath("(//li[@class='flight-module segment offer-listing']//button)[1]");
-		this.noThanksButton = By.xpath("//div[@class='modal-inner']//div[@class='click-handler-range']//a[@id='forcedChoiceNoThanks']");
+		this.sortDropdown = By.id(config.sortDropdown());
+		this.flightsLiList = By.xpath(config.flightsLiList());
+		this.firstFlightButton = By.xpath(config.firstFlightButton());
+		this.noThanksButton = By.xpath(config.noThanksButton());
 	}
 	
 	public void selectEarliestDeparture() {
-		WebDriverWait wait = new WebDriverWait(this.driver, 10);
+		WebDriverWait wait = new WebDriverWait(this.driver, config.explicitWaitSeconds());
 		new Select(
 			wait.until(ExpectedConditions.elementToBeClickable(this.sortDropdown))
 		).selectByVisibleText("Departure (Earliest)");
 	}
 	
 	public List<WebElement> getLiElements() {
-		return Utils.getLiElements(this.driver, this.flightsLiList, 10);
+		return Utils.getLiElements(this.driver, this.flightsLiList, config.explicitWaitSeconds());
 	}
 	
 	public void clickDepartureAndReturnButtons() {
 		for(int i=0; i<2; i++) {
-			new WebDriverWait(this.driver, 10)
+			new WebDriverWait(this.driver, config.explicitWaitSeconds())
 			.until(ExpectedConditions.elementToBeClickable(this.firstFlightButton))
 			.click();
 			
@@ -52,7 +52,7 @@ public class FlightsSearch extends BasePage {
 	
 	public void clickNoThanksButton() {
 		try {
-			WebDriverWait wait = new WebDriverWait(this.driver, 10);
+			WebDriverWait wait = new WebDriverWait(this.driver, config.explicitWaitSeconds());
 			wait.until(ExpectedConditions.elementToBeClickable(this.noThanksButton)).click();
 		} catch(Exception e) {
 			e.printStackTrace();
