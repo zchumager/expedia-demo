@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,12 +26,11 @@ public class RoundTripTest extends BaseTest {
 	private TripReviewSteps tripReviewSteps;
 	private FlightCheckoutSteps flightCheckoutSteps;
 	
-	public RoundTripTest() {
-		this.driver = new ChromeDriver();
-	}
-	
 	@Before
 	public void setup() {
+		WebDriverManager.chromedriver().setup();
+
+		this.driver = new ChromeDriver();
 		this.driver.manage().window().maximize();
 		this.driver.get(this.config.homeUrl());
 		this.homeSteps = new HomeSteps(this.driver, this.config);
@@ -46,7 +46,7 @@ public class RoundTripTest extends BaseTest {
 		
 		//this.flightsSearchSteps.selectEarliestDeparture();
 		
-		//Implicit wait for delalying filtering
+		//Implicit wait for delaying filtering
 		this.driver.manage().timeouts().implicitlyWait(config.implicitWaitSeconds(), TimeUnit.SECONDS);
 		List<WebElement> liList = this.flightsSearchSteps.getLiElements();
 		
@@ -58,8 +58,8 @@ public class RoundTripTest extends BaseTest {
 		
 		int firstDepartureHour = Utils.convertAmPm(firstLiMap.get("departureTime"));
 		int lastDepartureHour = Utils.convertAmPm(lastLiMap.get("departureTime"));
-		
-		//Assert.assertEquals( true , firstDepartureHour < lastDepartureHour);
+
+        Assert.assertTrue(firstDepartureHour < lastDepartureHour);
 		
 		this.flightsSearchSteps.clickDepartureAndReturnButtons();
 		this.flightsSearchSteps.clickNoThanksButton();
